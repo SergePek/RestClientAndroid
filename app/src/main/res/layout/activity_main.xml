@@ -2,60 +2,94 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
         android:id="@+id/id_value"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        android:id="@+id/content_value"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/name_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get"
-        android:onClick="onclick"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="459dp" />
+        android:text="Hello World!"
+        android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/button1"
+    <TextView
+        android:id="@+id/phone_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Post"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/button_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onclickGet"
+        android:text="Get" />
+
+    <Button
+        android:id="@+id/button_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="onclickPost"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="459dp" />
+        android:text="Post" />
 
+    <Button
+        android:id="@+id/button_put"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onclickPut"
+        android:text="Put" />
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onclickDelete"
+        android:text="Delete" />
+
+    <TextView
+        android:text="ID: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="2"
+        android:inputType="number" />
+    <TextView
+        android:text="NAME: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/editText_Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress" />
-<EditText
-        android:id="@+id/editText1"
+    <TextView
+        android:text="PHONE: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/editText_Phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress" />
-
-
+        android:inputType="number" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerview"/>
 </LinearLayout>
