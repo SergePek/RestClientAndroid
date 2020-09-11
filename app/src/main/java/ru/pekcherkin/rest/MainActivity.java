@@ -10,16 +10,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private EditText editTextId, editTextName, editTextPhone;
     private TextView textViewId, textViewName, textViewPhone;
+    private MyAdapter myAdapter;
+    private RecyclerView recyclerView;
+    MyAdapter.UserClickListener userClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +39,18 @@ public class MainActivity extends AppCompatActivity {
         textViewName = (TextView)findViewById(R.id.name_value);
         textViewPhone = (TextView)findViewById(R.id.phone_value);
 
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MyAdapter myAdapter = new MyAdapter();
-        recyclerView.setAdapter(myAdapter);
-        myAdapter.setItems(Arrays.asList(new User("Вова",3),new User("Саша",45),new User("Серега",445),
-                new User("Вова",3),new User("Саша",45),new User("Серега",445),
-                new User("Вова",3),new User("Саша",45),new User("Серега",445)));
+        userClickListener = new MyAdapter.UserClickListener() {
+            @Override
+            public void onUserClick(User user) {
+                Toast.makeText(MainActivity.this, "user:" + user.getName(), Toast.LENGTH_LONG).show();
+
+            }
+        };
+
+
+
     }
     @Override
     protected void onStart() {
@@ -61,8 +73,37 @@ public class MainActivity extends AppCompatActivity {
         new HttpRequestDelete().execute();
     }
 
+    public void onclickGetAll(View view) {new RestRequestGetAllUsers().execute(); }
 
-    private class RestRequestGetUserById extends AsyncTask<Void, Void, User> {
+
+    private class RestRequestGetAllUsers extends AsyncTask<Void, Void, List<User>> {
+        private ArrayList<User> users;
+
+        @Override
+        protected List<User> doInBackground(Void... params) {
+
+            try {
+                String url = "http://192.168.0.12:8080/usersAll/";
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+                User[] users = restTemplate.getForObject(url, User[].class);
+                List<User> usersList = Arrays.asList(users);
+                return usersList;
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+            return Arrays.asList(new User(0,"ошибка", 0));
+        }
+
+        @Override
+        protected void onPostExecute(List<User> users) {
+            myAdapter = new MyAdapter(userClickListener);
+            recyclerView.setAdapter(myAdapter);
+            myAdapter.setItems(users);
+        }
+
+    }private class RestRequestGetUserById extends AsyncTask<Void, Void, User> {
         @Override
         protected User doInBackground(Void... params) {
 

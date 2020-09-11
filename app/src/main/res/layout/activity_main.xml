@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,6 +16,7 @@
 
     <TextView
         android:id="@+id/name_value"
+        android:layout_below="@+id/id_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
@@ -23,12 +24,14 @@
 
     <TextView
         android:id="@+id/phone_value"
+        android:layout_below="@+id/name_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp" />
 
     <Button
         android:id="@+id/button_get"
+        android:layout_below="@+id/phone_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickGet"
@@ -36,13 +39,26 @@
 
     <Button
         android:id="@+id/button_post"
+        android:layout_toRightOf="@+id/button_get"
+        android:layout_alignTop="@+id/button_get"
+        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickPost"
         android:text="Post" />
+    <Button
+        android:id="@+id/button_getall"
+        android:layout_toRightOf="@+id/button_post"
+        android:layout_alignTop="@+id/button_post"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onclickGetAll"
+        android:text="GetAll" />
 
     <Button
         android:id="@+id/button_put"
+        android:layout_below="@+id/button_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickPut"
@@ -50,6 +66,10 @@
 
     <Button
         android:id="@+id/button_delete"
+        android:layout_below="@+id/button_put"
+        android:layout_toRightOf="@+id/button_put"
+        android:layout_alignTop="@+id/button_put"
+        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickDelete"
@@ -57,39 +77,56 @@
 
     <TextView
         android:text="ID: "
+        android:id="@+id/id"
+        android:layout_below="@+id/button_delete"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          />
     <EditText
         android:id="@+id/editText_ID"
+        android:layout_toRightOf="@+id/id"
+        android:layout_alignBottom="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="2"
         android:inputType="number" />
     <TextView
         android:text="NAME: "
+        android:id="@+id/name"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
     <EditText
         android:id="@+id/editText_Name"
+        android:layout_toRightOf="@+id/name"
+        android:layout_alignBottom="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress" />
     <TextView
         android:text="PHONE: "
+        android:id="@+id/phone"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
     <EditText
         android:id="@+id/editText_Phone"
+        android:layout_toRightOf="@+id/phone"
+        android:layout_alignBottom="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_below="@+id/phone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerview"/>
-</LinearLayout>
+        android:layout_height="match_parent" />
+</RelativeLayout>
