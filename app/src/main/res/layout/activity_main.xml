@@ -35,7 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickGet"
-        android:text="Get" />
+        android:textSize="10sp"
+        android:text="Получить" />
 
     <Button
         android:id="@+id/button_post"
@@ -45,7 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickPost"
-        android:text="Post" />
+        android:textSize="10sp"
+        android:text="Добавить" />
     <Button
         android:id="@+id/button_getall"
         android:layout_toRightOf="@+id/button_post"
@@ -54,7 +56,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickGetAll"
-        android:text="GetAll" />
+        android:textSize="8sp"
+        android:text="Получить всех" />
 
     <Button
         android:id="@+id/button_put"
@@ -62,7 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickPut"
-        android:text="Put" />
+        android:textSize="10sp"
+        android:text="Обновить" />
 
     <Button
         android:id="@+id/button_delete"
@@ -73,7 +77,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickDelete"
-        android:text="Delete" />
+        android:textSize="10sp"
+        android:text="Удалить" />
 
     <TextView
         android:text="ID: "
